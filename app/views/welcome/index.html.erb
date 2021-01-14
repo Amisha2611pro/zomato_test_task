@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Welcome to Sign Up website</h4>
+      <p class="text-center">I hope you are good</p>
+      
+      <%= link_to destroy_user_session_path, method: :delete do %>
+      <%= link_to 'menu list', menus_path, method: :get do %>
+      <%= link_to 'user', user_path, method: :get do %>
+
+      <i class="fa fa-sign-out" style="margin-left: 120px;"></i> Log Out
+      <% end %>
+    </article>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Add More Information</h4>
+      <%= form_for @menu, url: menu_path(@menu), html: {method: :put} do |f| %>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-address-book"></i> </span>
+          </div>
+          <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "Name" %>
+        </div> 
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-paint-brush"></i> </span>
+          </div>
+          <%= f.text_field :price, class: "form-control", placeholder: "price" %>
+        </div>  
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fa fa-coffee"></i> </span>
+          </div>
+          <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]}, {include_blank: 'Select One' }, {:class => "form-control"} ) %>
+        </div>                                    
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary btn-block" %>
+        </div>       
+        
+      <%end%>
+    </article>
+  </div>
+</div>
+

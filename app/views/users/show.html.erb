@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">User Details</h4>
+      <strong>Email - </strong>
+      <%= @user.email%>
+      <br>
+      <strong>First Name - </strong>
+      <%= @user.first_name%>
+      <br>
+      <strong>Last Name - </strong>
+      <%= @user.last_name %>
+      <br>    
+      <strong>phone Number - </strong>
+      <%= @user.phone_number %>
+      <br>
+      <strong>Address - </strong>
+      <%= @user.address %>
+      <br>
+      <%= link_to 'back to menu list', menus_path %> <br>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <i class="fa fa-sign-out pull-right"></i> Log Out
+      <% end %>                                 
+    </article>
+  </div>
+</div>
+
