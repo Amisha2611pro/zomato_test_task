@@ -8,4 +8,6 @@
 
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', first_name: 'test', last_name: 'test_test', phone_number: 1234567890, address: 'india') if Rails.env.development?
 
-Category.create!(name: 'dessert') if Rails.env.development?
+['dinner', 'wine', 'dessert', 'cold drinks'].each do |cat|
+  Category.find_or_create_by(name: cat)
+end
