@@ -4,7 +4,7 @@ class MenusController < ApplicationController
 
   def index
   	@menus = Menu.all
-   
+    @updated_record_count = @menus.where('DATE(updated_at) BETWEEN ? AND ?', Date.today.beginning_of_day, Date.today.end_of_day).count
   	respond_to do |format|
       format.html
       format.csv { send_data @menus.to_csv, filename: "menus-#{Date.today}.csv" }
