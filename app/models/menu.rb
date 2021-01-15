@@ -19,7 +19,7 @@ class Menu < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      menu = Menu.find_or_create_by(id: row[0].to_i)
+      menu = Menu.find_or_create_by(name: row[1])
       menu.update_attributes(name: row[1], price: row[2], category_id: row[3])
       menu.save!
     end
