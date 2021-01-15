@@ -4,11 +4,13 @@ class ApplicationController < ActionController::Base
 	respond_to :html, :json
 
   def after_sign_in_path_for(resource)
-  	if params[:controller] == "users/sessions"
-  		user_path(resource)
-    elsif 
-      edit_user_path(resource)
-    end  	
+    welcome_index_path
+  	# if params[:controller] == "users/sessions"
+  	# 	user_path(resource)
+   #  elsif 
+   #    welcome_index_path
+   #    edit_user_path(resource)
+   #  end  	
   end
 
 end

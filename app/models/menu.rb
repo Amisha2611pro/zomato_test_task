@@ -18,24 +18,11 @@ class Menu < ApplicationRecord
   end
 
   def self.import(file)
-    @menu_list = []
     CSV.foreach(file.path, headers: true) do |row|
-      menu = Menu.where(id: row.to_hash['id'].to_i).first
-      if menu.present?
-        m = row.to_hash
-        # menu.update_attributes(category_id: m['category_id'], name: m['name'], price: m['price'])
-       
-        menu.category_id = m['category_id']
-        menu.name = m['name']
-        menu.price = m['price']
-        menu.save
-        @menu_list <<  { menu: menu } 
-      else
-        Menu.create to_hash
-      end 
+      menu = Menu.find_or_create_by(id: row[0].to_i)
+      menu.update_attributes(name: row[1], price: row[2], category_id: row[3])
+      menu.save!
     end
-   
-    return @menu_list
   end
 
 end
